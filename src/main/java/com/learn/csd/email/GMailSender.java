@@ -106,11 +106,6 @@ public class GMailSender extends javax.mail.Authenticator {
 			throw e;
 		}
 	}
-	
-	public static void main(String[] args) throws Exception
-	{
-
-	}
 
 	public class ByteArrayDataSource implements DataSource {
 		private byte[] data;

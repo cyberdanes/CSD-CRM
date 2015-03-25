@@ -1,10 +1,11 @@
 package com.learn.csd;
 
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.mongodb.BasicDBObject;
@@ -47,34 +48,38 @@ public class MongoDAOImpl {
 		return STATICINSTANCE;
 	}
 
-	public DBObject findByCourse(String courseName){		
-		BasicDBObject findQuery = new  BasicDBObject("Excel", courseName);
-
+	public List<Customer> findByCourse(String courseName){
+		List<Customer> matchingCustomers = null;
+		BasicDBObject findQuery = new  BasicDBObject("Course", courseName);
 		DBCursor cursor = customerColl.find(findQuery);
 		try {
 			if(cursor.hasNext()) {
-				DBObject dbo =  cursor.next();
-				return dbo;
+				matchingCustomers = new ArrayList<Customer>();
+				while(cursor.hasNext()){
+					matchingCustomers.add(Customer.convertDBObjectToCustomer(cursor.next()));
+				}
 			}
 		} finally {
 			cursor.close();
 		}
-		return null;
+		return matchingCustomers;
 	}
 	
-	public DBObject findByLocation(String location){		
+	public List<Customer> findByLocation(String location){
+		List<Customer> matchingCustomers = null;
 		BasicDBObject findQuery = new  BasicDBObject("Location", location);
-
 		DBCursor cursor = customerColl.find(findQuery);
 		try {
 			if(cursor.hasNext()) {
-				DBObject dbo =  cursor.next();
-				return dbo;
+				matchingCustomers = new ArrayList<Customer>();
+				while(cursor.hasNext()){
+					matchingCustomers.add(Customer.convertDBObjectToCustomer(cursor.next()));
+				}
 			}
 		} finally {
 			cursor.close();
 		}
-		return null;
+		return matchingCustomers;
 	}
 	
 
