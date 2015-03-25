@@ -37,6 +37,23 @@ public class UrlTest extends TestCase{
 		}
 	}
 	
+	public void testUrlFilterByLocNegativeScenario()
+	{
+		String inputUrl="http://localhost:8080/findByLocation?location=Pune";
+		JunitController junit = new JunitController();
+		try
+		{
+			String output = junit.callUrl(inputUrl);
+			CharSequence cs= "Arjun";
+			boolean rslt = output.contains(cs);
+			assertFalse(rslt);
+		}
+		catch(Exception e)
+		{
+			fail();
+		}
+	}
+	
 	
 	public void testUrlFilterByCourse()
 	{
@@ -48,6 +65,23 @@ public class UrlTest extends TestCase{
 			CharSequence cs= "Rohin Patel";
 			boolean rslt = output.contains(cs);
 			assertTrue(rslt);
+		}
+		catch(Exception e)
+		{
+			fail();
+		}
+	}
+	
+	public void testUrlFilterByCourseNegativeScenario()
+	{
+		String inputUrl="http://localhost:8080//findByCourse?courseName=CSD";
+		JunitController junit = new JunitController();
+		try
+		{
+			String output = junit.callUrl(inputUrl);
+			CharSequence cs= "Arjun";
+			boolean rslt = output.contains(cs);
+			assertFalse(rslt);
 		}
 		catch(Exception e)
 		{
