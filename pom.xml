@@ -35,6 +35,27 @@
 			<artifactId>mockito-core</artifactId>
 			<version>2.0.5-beta</version>
 		</dependency>
+		<dependency>
+		      <groupId>jxl</groupId>  
+		       <artifactId>com.jxl</artifactId>  
+		       <version>2.6</version> 
+		      <scope>system</scope>
+		      <systemPath>${project.basedir}/src/lib/jxl-2.6.jar</systemPath>
+		</dependency>
+		<dependency>
+		      <groupId>org.apache.felix</groupId>  
+		       <artifactId>webconsole</artifactId>  
+		       <version>1.0.0</version> 
+		      <scope>system</scope>
+		      <systemPath>${project.basedir}/src/lib/org.apache.felix.webconsole-1.0.0.jar</systemPath>
+		</dependency>
+		<dependency>
+		      <groupId>poi</groupId>  
+		       <artifactId>ooxml</artifactId>  
+		       <version>3.5</version> 
+		      <scope>system</scope>
+		      <systemPath>${project.basedir}/src/lib/poi-ooxml-3.5-beta4.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 
