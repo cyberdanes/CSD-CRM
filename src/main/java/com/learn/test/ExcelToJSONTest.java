@@ -77,7 +77,7 @@ public class ExcelToJSONTest extends TestCase {
 			ExcelToJSONConverter conv = new ExcelToJSONConverter();
 			JSONArray json = new JSONArray();
 			
-			assertEquals(true, conv.saveToDB(json));
+			assertEquals(false, conv.saveToDB(json));
 		}
 		catch (Exception ex)
 		{
