@@ -74,4 +74,9 @@ public class ExcelToJSONConverter {
 		return null;
 
 	}
+
+	public boolean saveToDB(JSONArray jsonArray)
+	{
+		return false;
+	}
 }
