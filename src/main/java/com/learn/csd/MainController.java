@@ -22,7 +22,7 @@ public class MainController {
 		res.setId("1");
 		DBObject dbo = mongoDaoImpl.findByCourse(courseName);
 		if(dbo!=null){
-			res.setContent(dbo.get("fullName").toString());
+			res.setContent(dbo.get("Full Name").toString());
 		}
         return res;
 	}
@@ -33,7 +33,7 @@ public class MainController {
 		res.setId("1");
 		DBObject dbo = mongoDaoImpl.findByLocation(location);
 		if(dbo!=null){
-			res.setContent(dbo.get("fullName").toString());
+			res.setContent(dbo.get("Full Name").toString());
 		}
         return res;
 	}

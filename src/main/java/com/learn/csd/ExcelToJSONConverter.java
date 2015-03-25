@@ -14,12 +14,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ExcelToJSONConverter {
-
-/*	public static void main(String[] args) {
-		File file = new File("C:/Users/Navi/Desktop/CustomerInfo.xls");
+	
+	private static MongoDAOImpl mongoDaoImpl = MongoDAOImpl.getInstance();
+/*
+public static void main(String[] args) {
+		File file = new File("D:/Study/sts-bundle/PS/SpringJPAHibernate/CSDCRM/CSD-CRM/CustomerInfo.xls");
 		getJSONfromExcel(file);
-	}*/
-
+	}
+*/
 	public static JSONArray getJSONfromExcel(File file) {
 		try {
 
@@ -55,6 +57,7 @@ public class ExcelToJSONConverter {
 						}
 					}
 				}
+				mongoDaoImpl.insertCustomer("customer", colData);
 				jSONArray.put(colData);
 			}
 			
@@ -73,10 +76,5 @@ public class ExcelToJSONConverter {
 
 		return null;
 
-	}
-
-	public boolean saveToDB(JSONArray jsonArray)
-	{
-		return false;
 	}
 }

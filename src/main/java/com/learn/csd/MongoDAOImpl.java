@@ -4,6 +4,9 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -45,7 +48,7 @@ public class MongoDAOImpl {
 	}
 
 	public DBObject findByCourse(String courseName){		
-		BasicDBObject findQuery = new  BasicDBObject("course", courseName);
+		BasicDBObject findQuery = new  BasicDBObject("Excel", courseName);
 
 		DBCursor cursor = customerColl.find(findQuery);
 		try {
@@ -60,7 +63,7 @@ public class MongoDAOImpl {
 	}
 	
 	public DBObject findByLocation(String location){		
-		BasicDBObject findQuery = new  BasicDBObject("location", location);
+		BasicDBObject findQuery = new  BasicDBObject("Location", location);
 
 		DBCursor cursor = customerColl.find(findQuery);
 		try {
@@ -84,6 +87,18 @@ public class MongoDAOImpl {
 					for(String colName : data.keySet()){
 						basicDBObject.put(colName, data.get(colName));
 					}
+					collection.insert(basicDBObject);
+				}
+			}
+		}
+	}
+	
+	public void insertCustomer(String tableName, JSONObject jo){
+		if(tableName!=null && !tableName.isEmpty() && jo!=null && jo.length()>0){
+			if(tableCollectionMap.containsKey(tableName)){
+				DBCollection collection = tableCollectionMap.get(tableName);
+				if(collection!=null){
+					BasicDBObject basicDBObject = (BasicDBObject)com.mongodb.util.JSON.parse(jo.toString());
 					collection.insert(basicDBObject);
 				}
 			}
